@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+#from tkinter import ttk
 from password_generator import PasswordGenerator
 
 
@@ -18,20 +18,31 @@ class PasswordGeneratorGUI:
     self.password_generator = PasswordGenerator()
 
     # Label
-    self.label = ttk.Label(self.root, text="Generated Password:")
+    self.label = tk.Label(self.root, text="Generated Password:")
     self.label.pack()
 
     # Entry for password display
-    self.password_entry = ttk.Entry(self.root, width=30, state="readonly")
+    self.password_entry = tk.Entry(self.root, width=30, state="readonly")
     self.password_entry.pack()
 
     # Generate Button
-    self.generate_button = ttk.Button(self.root, text="Generate Password", command=self.generate_password)
+    self.generate_button = tk.Button(self.root, text="Generate Password", command=self.generate_password)
     self.generate_button.pack()
 
     # Save Button
-    self.generate_button = ttk.Button(self.root, text="Save Password to File", command=self.save_password_file)
+    self.generate_button = tk.Button(self.root, text="Save Password to File", command=self.save_password_file)
     self.generate_button.pack()
+
+    # Entry for password strength
+    self.password_strength_Label = tk.Label(self.root, text="enter password to evalute strength")
+    self.password_strength_Label.pack()
+    e = tk.Entry(width=10)
+    e.pack()
+    self.password_entry.pack()
+
+    # Label for password strength feedback
+    self.strength_label = tk.Label(self.root, text="")
+    self.strength_label.pack()
 
   def generate_password(self):
     """

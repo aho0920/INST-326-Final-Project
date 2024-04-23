@@ -12,7 +12,8 @@ class PasswordGenerator:
     """
     password = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) #k = length
     return password
-  def save_password_to_file(self, password, filename):
+  def save_password_to_file(self, password, filename): 
+    #Andrew 
     """
     Creates a file to save the password to
     Args:
@@ -23,6 +24,7 @@ class PasswordGenerator:
     """
     pass
   def check_password_strength(self, password):
+    # Emani 
     """
     Ensures that the password is strong
     Args: 
@@ -33,6 +35,7 @@ class PasswordGenerator:
     pass
 
   def generate_passphrase_based_on_word(self, word):
+    # NAMEeeee
     """
     Creates a passphrase (string of words) based on a word given by the user
     Args:
@@ -43,6 +46,7 @@ class PasswordGenerator:
     pass
 
   def character_substitution(self, password):
+    #Nameeeee
     """
     Substitute characters in the given password
     Args:
@@ -53,6 +57,7 @@ class PasswordGenerator:
     pass
 
   def encrypt_password(self, password):
+    #Nameee
     """
     Encrypts the password with MD5 
     Args:
@@ -63,6 +68,7 @@ class PasswordGenerator:
     pass
 
   def decrypt_password(self, passwordEncrypted):
+    #Nameeeee
     """
     Decrypts password (assuming it was encrypted with MD5)
     Args:
