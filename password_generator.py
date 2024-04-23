@@ -10,7 +10,7 @@ class PasswordGenerator:
     Returns:
       secure password (string)
     """
-    password = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
+    password = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) #k = length
     return password
   def save_password_to_file(self, password, filename):
     """

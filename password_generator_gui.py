@@ -29,6 +29,10 @@ class PasswordGeneratorGUI:
     self.generate_button = ttk.Button(self.root, text="Generate Password", command=self.generate_password)
     self.generate_button.pack()
 
+    # Save Button
+    self.generate_button = ttk.Button(self.root, text="Save Password to File", command=self.save_password_file)
+    self.generate_button.pack()
+
   def generate_password(self):
     """
     Generates a random password using the PasswordGenerator class
@@ -42,6 +46,12 @@ class PasswordGeneratorGUI:
     self.password_entry.delete(0, "end")
     self.password_entry.insert(0, password)
     self.password_entry.config(state="readonly")
+  
+  def save_password_file(self):
+    filesave = self.password_generator.save_password_to_file()
+
+
+  # ADD OTHER METHODS FOR OTHER POSSIBLE ACTIONS
 
 def create_gui():
   """
