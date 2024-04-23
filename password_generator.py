@@ -1,4 +1,5 @@
-#import things
+import random
+import string
 
 class PasswordGenerator:
   def generate_password(self):
@@ -9,6 +10,8 @@ class PasswordGenerator:
     Returns:
       secure password (string)
     """
+    password = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
+    return password
   def save_password_to_file(self, password, filename):
     """
     Creates a file to save the password to
@@ -18,6 +21,7 @@ class PasswordGenerator:
     Returns:
       file with password
     """
+    pass
   def check_password_strength(self, password):
     """
     Ensures that the password is strong
