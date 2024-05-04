@@ -1,8 +1,10 @@
 import random
 import string
+import requests
 
 class PasswordGenerator:
   def generate_password(self):
+    #Andrew
     """
     Generates a secure password
     Args: 
@@ -12,41 +14,42 @@ class PasswordGenerator:
     """
     password = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) #k = length
     return password
-  def save_password_to_file(self, password, filename): 
-    #Andrew 
-    """
-    Creates a file to save the password to
-    Args:
-      password (string) - the user inputed password
-      filename (string) - the name of the file to be created
-    Returns:
-      file with password
-    """
-    pass
   def check_password_strength(self, password):
-    # Emani 
+    #Emani
     """
     Ensures that the password is strong
     Args: 
-      password (string) - the user's password
+        password (string) - the user's password
     Returns:
-      True/False (boolean) - returns True if the password is strong or False if it is not 
+        True/False (boolean) - returns True if the password is strong or False if it is not 
     """
     pass
 
-  def generate_passphrase_based_on_word(self, word):
-    # NAMEeeee
+  def get_word_list(self):
+    #Makachi  
     """
-    Creates a passphrase (string of words) based on a word given by the user
+    get list of words from online 
     Args:
-      word (string) - the user's inputed key word
+      none
+    Returns:
+      list of words or empty list if failed
+    """
+    pass
+    
+  def generate_passphrase(self, number):
+    #Makachi 
+    """
+    Creates a passphrase (string of words) with the number of words inputed by user
+    Args:
+      num_words (int) - the user's inputed number of words to be used
     Returns:
       passphrase (string)
     """
     pass
+  
 
   def character_substitution(self, password):
-    #Nameeeee
+    #Emani
     """
     Substitute characters in the given password
     Args:
@@ -55,26 +58,3 @@ class PasswordGenerator:
       character substituted password (string)
     """
     pass
-
-  def encrypt_password(self, password):
-    #Nameee
-    """
-    Encrypts the password with MD5 
-    Args:
-      password (string) - the user's given password
-    Returns:
-      encrypted password (string)
-    """
-    pass
-
-  def decrypt_password(self, passwordEncrypted):
-    #Nameeeee
-    """
-    Decrypts password (assuming it was encrypted with MD5)
-    Args:
-      passwordEncrypted (string) - encrypted password
-    Returns:
-      decrypted password (string)
-    """
-    pass 
-

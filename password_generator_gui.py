@@ -1,7 +1,5 @@
 import tkinter as tk
-#from tkinter import ttk
 from password_generator import PasswordGenerator
-
 
 class PasswordGeneratorGUI:
   def __init__(self, root):
@@ -14,7 +12,6 @@ class PasswordGeneratorGUI:
     """
     self.root = root
     self.root.title("Password Generator")
-
     self.password_generator = PasswordGenerator()
 
     # Label
@@ -22,6 +19,7 @@ class PasswordGeneratorGUI:
     self.label.pack()
 
     # Entry for password display
+    self.password = ""
     self.password_entry = tk.Entry(self.root, width=30, state="readonly")
     self.password_entry.pack()
 
@@ -29,40 +27,164 @@ class PasswordGeneratorGUI:
     self.generate_button = tk.Button(self.root, text="Generate Password", command=self.generate_password)
     self.generate_button.pack()
 
-    # Save Button
-    self.generate_button = tk.Button(self.root, text="Save Password to File", command=self.save_password_file)
-    self.generate_button.pack()
+    # copy button 
+    self.copy_button = tk.Button(self.root, text = "Copy Password", command= self.copy_password)
+    self.copy_button.pack()
 
     # Entry for password strength
-    self.password_strength_Label = tk.Label(self.root, text="enter password to evalute strength")
+    self.password_strength_Label = tk.Label(self.root, text="Enter password to evalute strength:")
     self.password_strength_Label.pack()
-    e = tk.Entry(width=10)
-    e.pack()
-    self.password_entry.pack()
+    
+    self.password_strength_var = tk.StringVar()  # Variable to hold the entered password
+    self.password_strength_entry = tk.Entry(self.root, width=10, textvariable=self.password_strength_var)
+    self.password_strength_entry.pack()
+
+    self.password_strength_button = tk.Button(self.root, text="Check Strength", command=self.check_password_strength)
+    self.password_strength_button.pack()
 
     # Label for password strength feedback
     self.strength_label = tk.Label(self.root, text="")
     self.strength_label.pack()
 
+    # character substitution 
+    self.sub_pass = ""
+    self.char_sub_label = tk.Label(self.root, text="Enter password for character substitution:")
+    self.char_sub_label.pack()
+    
+    self.char_sub_var = tk.StringVar()  # Variable to hold the entered password
+    self.char_sub_entry = tk.Entry(self.root, width=10, textvariable=self.char_sub_var)
+    self.char_sub_entry.pack()
+
+    self.char_sub_button = tk.Button(self.root, text="Substitute Characters", command=self.char_sub)
+    self.char_sub_button.pack()
+    self.char_sub_return = tk.Label(self.root, text="")
+    self.char_sub_return.pack()
+    # copy button for substituted characters
+    self.copy_char_button = tk.Button(self.root, text = "Copy Substituted Characters", command= self.copy_char_sub)
+    self.copy_char_button.pack()
+
+    # passphrase button
+    self.passphrase_num_var = tk.StringVar()
+    self.passphrase_label = tk.Label(self.root, text = "Input the number of words for passphrase")
+    self.passphrase_label.pack()
+    vcmd = root.register(self.on_validate)
+    self.passphrase_entry = tk.Entry(root, validate="key", validatecommand=(vcmd, '%P'), textvariable = self.passphrase_num_var)
+    self.passphrase_entry.pack()
+    self.passphrase_button = tk.Button(self.root, text = "Create Passphrase", command =self.passphrase)
+    self.passphrase_button.pack()
+    self.passphrase_return = tk.Label(self.root, text="")
+    self.passphrase_return.pack()
+    #copy passphrase
+    self.copy_passphrase_button = tk.Button(self.root, text="Copy Passphrase", command = self.copy_passphrase)
+    self.copy_passphrase_button.pack()
+
   def generate_password(self):
     """
-    Generates a random password using the PasswordGenerator class
+    Calls the PasswordGenerator class to generate a password
     Args:
-        self (PasswordGeneratorGUI): The current instance of the PasswordGeneratorGUI class.
+        None
     Returns:
         None
     """
-    password = self.password_generator.generate_password()
+    self.password = self.password_generator.generate_password()
     self.password_entry.config(state="normal")
     self.password_entry.delete(0, "end")
-    self.password_entry.insert(0, password)
+    self.password_entry.insert(0, self.password)
     self.password_entry.config(state="readonly")
   
-  def save_password_file(self):
-    filesave = self.password_generator.save_password_to_file()
+  def copy_password(self):
+    """
+    copies the password to user's clipboard
+    Args:
+      None
+    Returns:
+      None
+    """
+    self.root.clipboard_clear()
+    self.root.clipboard_append(self.password)
+    self.root.update()
 
+  def check_password_strength(self):
+    """
+    calls the password generator class to check password strength
+    Args:
+      None
+    Returns:
+      None
+    """
+    strength = self.password_generator.check_password_strength(self.password_strength_var.get())
+    if strength:
+        self.strength_label.config(text="Password strength: Strong", foreground="green")
+    else:
+        self.strength_label.config(text="Password strength: Weak", foreground="red")
 
-  # ADD OTHER METHODS FOR OTHER POSSIBLE ACTIONS
+  def char_sub(self):
+    """
+    calls the password generator class to substitute characters of the given password
+    Args:
+      None
+    Returns:
+      None
+    """
+    self.sub_pass = self.password_generator.character_substitution(self.char_sub_var.get())
+    #self.password_entry.config(state="normal")
+    self.char_sub_return.config(text = self.sub_pass)
+
+  def copy_char_sub(self):
+    """
+    copies the substituted character string to user's clipboard
+    Args:
+      None
+    Returns:
+      None
+    """
+    self.root.clipboard_clear()
+    self.root.clipboard_append(self.sub_pass)
+    self.root.update()
+
+  def validate_input(self,text):
+    #Andrew
+    """
+    ensures that the user inputed text is an integer
+    Args:
+      text (str) - user inputed string to be checked
+    Returns:
+      True/False (boolean) - depending on if the given text is an integer or not. 
+    """
+    pass
+  def on_validate(self,P):
+    #Andrew
+    """
+    alerts the user if the inputed text is not an integer
+    Args:
+      P(str) - user inputed string 
+    Returns:
+      True/False(boolean) - returns True if the string is an integer and False to alert for invalid input
+    """
+    pass
+    
+  def passphrase(self):
+    """
+    calls the password generator class to create the passphrase string
+    Args:
+      None
+    Returns:
+      None
+    """
+    self.passphrase = self.password_generator.generate_passphrase(self.passphrase_num_var.get())
+    self.passphrase_return.config(text = self.passphrase)
+
+  def copy_passphrase(self):
+    """
+    copies the passphrase string to user's clipboard
+    Args:
+      None
+    Returns:
+      None
+    """
+    self.root.clipboard_clear()
+    self.root.clipboard_append(self.passphrase)
+    self.root.update()
 
 def create_gui():
   """
