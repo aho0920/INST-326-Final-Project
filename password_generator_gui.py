@@ -83,6 +83,8 @@ class PasswordGeneratorGUI:
     self.copy_passphrase_button.pack()
 
   def generate_password(self):
+    # Driver: Makachi
+    # Navigator: Andrew
     """
     Calls the PasswordGenerator class to generate a password
     Args:
@@ -97,6 +99,8 @@ class PasswordGeneratorGUI:
     self.password_entry.config(state="readonly")
   
   def copy_password(self):
+    # Driver: Diana
+    # Navigator: Makachi
     """
     copies the password to user's clipboard
     Args:
@@ -109,6 +113,8 @@ class PasswordGeneratorGUI:
     self.root.update()
 
   def check_password_strength(self):
+    # Driver: Diana
+    # Navigator: Makachi
     """
     Calls the password generator class to check password strength
     Args:
@@ -123,6 +129,8 @@ class PasswordGeneratorGUI:
         self.strength_label.config(text="Password strength: Weak", foreground="red")
 
   def char_sub(self):
+    # Driver: Makachi
+    # Navigator: Emani
     """
     Calls the password generator class to substitute characters of the given password
     Args:
@@ -134,6 +142,8 @@ class PasswordGeneratorGUI:
     self.char_sub_return.config(text = self.sub_pass)
 
   def copy_char_sub(self):
+    # Driver: Andrew
+    # Navigator: Diana
     """
     Copies the substituted character string to user's clipboard
     Args:
@@ -146,7 +156,8 @@ class PasswordGeneratorGUI:
     self.root.update()
 
   def validate_input(self,text):
-    #Andrew
+    # Driver: Emani
+    # Navigator: Andrew
     """
     Ensures that the user inputed text is an integer
     Args:
@@ -155,8 +166,10 @@ class PasswordGeneratorGUI:
       True/False (boolean) - depending on if the given text is an integer or not. 
     """
     pass
+    
   def on_validate(self,P):
-    #Andrew
+    # Driver: Emani
+    # Navigator: Diana
     """
     Alerts the user if the inputed text is not an integer
     Args:
@@ -167,6 +180,8 @@ class PasswordGeneratorGUI:
     pass
     
   def passphrase(self):
+    # Driver: Andrew
+    # Navigator: Makachi
     """
     Calls the password generator class to create the passphrase string
     Args:
@@ -178,6 +193,8 @@ class PasswordGeneratorGUI:
     self.passphrase_return.config(text = self.passphrase)
 
   def copy_passphrase(self):
+    # Driver: Diana
+    # Navigator: Emani
     """
     Copies the passphrase string to user's clipboard
     Args:
@@ -190,6 +207,8 @@ class PasswordGeneratorGUI:
     self.root.update()
 
 def create_gui():
+  # Driver: Makachi
+  # Navigator: Andrew
   """
   Initializes the GUI window
   Args: 
