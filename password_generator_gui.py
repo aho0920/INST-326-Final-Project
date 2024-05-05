@@ -2,6 +2,8 @@ import tkinter as tk
 from password_generator import PasswordGenerator
 
 class PasswordGeneratorGUI:
+  # Driver: Emani
+  # Navigator: Diana
   def __init__(self, root):
     """
     Creates the initial GUI 
@@ -27,7 +29,7 @@ class PasswordGeneratorGUI:
     self.generate_button = tk.Button(self.root, text="Generate Password", command=self.generate_password)
     self.generate_button.pack()
 
-    # copy button 
+    # Copy button 
     self.copy_button = tk.Button(self.root, text = "Copy Password", command= self.copy_password)
     self.copy_button.pack()
 
@@ -46,7 +48,7 @@ class PasswordGeneratorGUI:
     self.strength_label = tk.Label(self.root, text="")
     self.strength_label.pack()
 
-    # character substitution 
+    # Character substitution 
     self.sub_pass = ""
     self.char_sub_label = tk.Label(self.root, text="Enter password for character substitution:")
     self.char_sub_label.pack()
@@ -59,11 +61,12 @@ class PasswordGeneratorGUI:
     self.char_sub_button.pack()
     self.char_sub_return = tk.Label(self.root, text="")
     self.char_sub_return.pack()
-    # copy button for substituted characters
+    
+    # Copy button for substituted characters
     self.copy_char_button = tk.Button(self.root, text = "Copy Substituted Characters", command= self.copy_char_sub)
     self.copy_char_button.pack()
 
-    # passphrase button
+    # Passphrase button
     self.passphrase_num_var = tk.StringVar()
     self.passphrase_label = tk.Label(self.root, text = "Input the number of words for passphrase")
     self.passphrase_label.pack()
@@ -74,7 +77,8 @@ class PasswordGeneratorGUI:
     self.passphrase_button.pack()
     self.passphrase_return = tk.Label(self.root, text="")
     self.passphrase_return.pack()
-    #copy passphrase
+    
+    # Copy passphrase
     self.copy_passphrase_button = tk.Button(self.root, text="Copy Passphrase", command = self.copy_passphrase)
     self.copy_passphrase_button.pack()
 
@@ -106,7 +110,7 @@ class PasswordGeneratorGUI:
 
   def check_password_strength(self):
     """
-    calls the password generator class to check password strength
+    Calls the password generator class to check password strength
     Args:
       None
     Returns:
@@ -120,19 +124,18 @@ class PasswordGeneratorGUI:
 
   def char_sub(self):
     """
-    calls the password generator class to substitute characters of the given password
+    Calls the password generator class to substitute characters of the given password
     Args:
       None
     Returns:
       None
     """
     self.sub_pass = self.password_generator.character_substitution(self.char_sub_var.get())
-    #self.password_entry.config(state="normal")
     self.char_sub_return.config(text = self.sub_pass)
 
   def copy_char_sub(self):
     """
-    copies the substituted character string to user's clipboard
+    Copies the substituted character string to user's clipboard
     Args:
       None
     Returns:
@@ -145,7 +148,7 @@ class PasswordGeneratorGUI:
   def validate_input(self,text):
     #Andrew
     """
-    ensures that the user inputed text is an integer
+    Ensures that the user inputed text is an integer
     Args:
       text (str) - user inputed string to be checked
     Returns:
@@ -155,7 +158,7 @@ class PasswordGeneratorGUI:
   def on_validate(self,P):
     #Andrew
     """
-    alerts the user if the inputed text is not an integer
+    Alerts the user if the inputed text is not an integer
     Args:
       P(str) - user inputed string 
     Returns:
@@ -165,7 +168,7 @@ class PasswordGeneratorGUI:
     
   def passphrase(self):
     """
-    calls the password generator class to create the passphrase string
+    Calls the password generator class to create the passphrase string
     Args:
       None
     Returns:
@@ -176,7 +179,7 @@ class PasswordGeneratorGUI:
 
   def copy_passphrase(self):
     """
-    copies the passphrase string to user's clipboard
+    Copies the passphrase string to user's clipboard
     Args:
       None
     Returns:
