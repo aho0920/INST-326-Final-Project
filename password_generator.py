@@ -4,7 +4,8 @@ import requests
 
 class PasswordGenerator:
   def generate_password(self):
-    #Andrew
+    # Driver: Makachi
+    # Navigator: Andrew
     """
     Generates a secure password
     Args: 
@@ -14,8 +15,10 @@ class PasswordGenerator:
     """
     password = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) #k = length
     return password
+  
   def check_password_strength(self, password):
-    #Emani
+    # Driver: Diana
+    # Navigator: Emani
     """
     Ensures that the password is strong
     Args: 
@@ -23,10 +26,22 @@ class PasswordGenerator:
     Returns:
         True/False (boolean) - returns True if the password is strong or False if it is not 
     """
-    pass
+    # Convert the given password to string
+    passwordStr = str(password)
+    if len(passwordStr) < 8:
+        return False
+
+    # Check for at least one uppercase letter, one lowercase letter, one digit, and one special character
+    has_upper = any(char.isupper() for char in passwordStr)
+    has_lower = any(char.islower() for char in passwordStr)
+    has_digit = any(char.isdigit() for char in passwordStr)
+    has_special = any(char in string.punctuation for char in passwordStr)
+
+    return has_upper and has_lower and has_digit and has_special
 
   def get_word_list(self):
-    #Makachi  
+    # Driver: Andrew  
+    # Navigator: Makachi
     """
     get list of words from online 
     Args:
