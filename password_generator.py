@@ -69,7 +69,21 @@ class PasswordGenerator:
     Returns:
       passphrase (string)
     """
-    pass
+    num_words = int(number)
+    # Retrieve a list of common English words
+    word_list = self.get_word_list()
+
+
+    # Choose random words from the list to form the passphrase
+    passphrase_words = [random.choice(word_list) for _ in range(num_words)]
+
+
+    # Join the words to form the passphrase
+    passphrase = ' '.join(passphrase_words)
+
+
+    return passphrase
+
   
 
   def character_substitution(self, password):
