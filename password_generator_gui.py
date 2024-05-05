@@ -165,7 +165,12 @@ class PasswordGeneratorGUI:
     Returns:
       True/False (boolean) - depending on if the given text is an integer or not. 
     """
-    pass
+    if text.isdigit():
+        return True
+    elif text == "":
+        return True  # Allow empty input
+    else:
+        return False    
     
   def on_validate(self,P):
     # Driver: Emani
@@ -177,7 +182,11 @@ class PasswordGeneratorGUI:
     Returns:
       True/False(boolean) - returns True if the string is an integer and False to alert for invalid input
     """
-    pass
+    if self.validate_input(P):
+        return True
+    else:
+        self.root.bell()  # Ring the bell for invalid input
+        return False    
     
   def passphrase(self):
     # Driver: Andrew

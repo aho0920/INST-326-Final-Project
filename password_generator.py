@@ -13,8 +13,15 @@ class PasswordGenerator:
     Returns:
       secure password (string)
     """
-    password = ''.join(random.choices(string.ascii_letters + string.digits, k=10)) #k = length
-    return password
+    while True:
+      #ensure that the generated password will meet the criteria of our strength checker
+      password = ''.join(random.choices(string.ascii_letters + string.digits + string.punctuation, k=12))
+      if any(char.isupper() for char in password) and \
+         any(char.islower() for char in password) and \
+         any(char.isdigit() for char in password) and \
+         any(char in string.punctuation for char in password):
+          return password
+
   
   def check_password_strength(self, password):
     # Driver: Diana
