@@ -49,7 +49,16 @@ class PasswordGenerator:
     Returns:
       list of words or empty list if failed
     """
-    pass
+    # Fetch a list of common English words from an randomlists.com
+    response = requests.get("https://www.randomlists.com/data/words.json")
+    if response.status_code == 200:
+        word_list = response.json()["data"]
+        return word_list
+    else:
+        print("Failed to fetch word list.")
+        return []
+
+
     
   def generate_passphrase(self, number):
     #Makachi 
