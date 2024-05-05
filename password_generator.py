@@ -11,7 +11,7 @@ class PasswordGenerator:
     Args: 
       None
     Returns:
-      secure password (string)
+      password (string)
     """
     while True:
       #ensure that the generated password will meet the criteria of our strength checker
