@@ -40,7 +40,7 @@ class PasswordGenerator:
     return has_upper and has_lower and has_digit and has_special
 
   def get_word_list(self):
-    # Driver: Andrew  
+    # Driver: Emani  
     # Navigator: Makachi
     """
     get list of words from online 
@@ -61,7 +61,8 @@ class PasswordGenerator:
 
     
   def generate_passphrase(self, number):
-    #Makachi 
+    # Driver: Andrew
+    # Navigator: Diana
     """
     Creates a passphrase (string of words) with the number of words inputed by user
     Args:
@@ -73,21 +74,19 @@ class PasswordGenerator:
     # Retrieve a list of common English words
     word_list = self.get_word_list()
 
-
     # Choose random words from the list to form the passphrase
     passphrase_words = [random.choice(word_list) for _ in range(num_words)]
 
-
     # Join the words to form the passphrase
     passphrase = ' '.join(passphrase_words)
-
 
     return passphrase
 
   
 
   def character_substitution(self, password):
-    #Emani
+    # Driver: Andrew
+    # Navigator: Emani
     """
     Substitute characters in the given password
     Args:
