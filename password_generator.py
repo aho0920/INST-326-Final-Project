@@ -72,4 +72,29 @@ class PasswordGenerator:
     Returns:
       character substituted password (string)
     """
-    pass
+    # Define a dictionary for character substitution
+    substitution_map = {
+        'a': '4',
+        'e': '3',
+        'i': '1',
+        'o': '0',
+        's': '$',
+        't': '7',
+        'A': '4',
+        'E': '3',
+        'I': '1',
+        'O': '0',
+        'S': '$',
+        'T': '7',
+        ' ': '_'
+    }
+       
+    # Iterate over each character in the password and substitute if it matches
+    substituted_password = ''
+    for char in password:
+        substituted_password += substitution_map.get(char, char)  
+    # If char not in map, keep it unchanged
+   
+    return substituted_password
+
+
